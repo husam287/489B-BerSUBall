@@ -1,0 +1,63 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+
+
+
+
+int main()
+
+{
+	int inp;
+	//boys group
+	int boys;
+	cin >> boys;
+	vector<int> b;
+	for (int i = 0; i < boys; i++)
+	{
+		cin >> inp;
+		b.push_back(inp);
+	}
+	//_______________
+
+	//girls group
+	int girls;
+	cin >> girls;
+	vector<int> g;
+	for (int i = 0; i < girls; i++)
+	{
+		cin >> inp;
+		g.push_back(inp);
+	}
+	//__________________
+
+
+
+	//sorting
+	sort(b.begin(), b.end());
+	sort(g.begin(), g.end());
+	//_______
+
+	inp = 0;
+
+
+    //checking
+	for (int i = 0; i < b.size(); i++)
+	{
+		for (int j = 0; j < g.size(); j++)
+		if (b[i] - g[j] == -1 || b[i] - g[j] == 1 ||b[i]-g[j]==0)
+		{
+			b.erase(b.begin() + i);
+			i--;
+			g.erase(g.begin() + j);
+			inp++;
+			break;
+		}
+	}
+	//______________
+	cout << inp;
+
+	return 0;
+}
